@@ -1,0 +1,9 @@
+# Visual Studio cache/options directory
+.vs/
+
+# User-specific files
+CMakePresets.json
+
+# Build results
+[Oo]ut/
+[Bb]in/
