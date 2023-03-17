@@ -1,8 +1,8 @@
-// SmartPointersAndPolymorphism.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// SmartPointersAndPolymorphism.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 //
-//  Îïèñàíèå çàäà÷è:
-//      Èìååòñÿ ìåòîä â Server\Server.Core\Server.Core.Static\ServerBuilder.hpp:
+//  ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ Ð·Ð°Ð´Ð°Ñ‡Ð¸:
+//      Ð˜Ð¼ÐµÐµÑ‚ÑÑ Ð¼ÐµÑ‚Ð¾Ð´ Ð² Server\Server.Core\Server.Core.Static\ServerBuilder.hpp:
 //      namespace Server::Builder
 //      {
 //          ServerBuilder::Server* make() noexcept
@@ -29,11 +29,11 @@
 //          }
 //      }  /// namespace Server::Builder
 //      
-//      Íàäî:
-//      Ðàçðàáîòàòü èíòåðôåéñ äëÿ îðãàíèçàöèè óíèâåðñàëüíîãî ñïîñîáà ïåðåäà÷è äàííûõ ïîäêëþ÷åíèÿ ê ÁÄ (äëÿ ðàçëè÷íûõ ïðåäêîâ
-//      IRepositoryManager) è âîçâðàòà ñàìîãî ïîäêëþ÷åíèÿ. Â òåêóùåì êîíòåêñòå èìååòñÿ ïîäêëþ÷åíèå òîëüêî ê Postgre.
-//      Åñòü:      
-//      íîâûé ôàéë Server\Server.Core\Server.Core.Static\AbstractServerBuilder.hpp:
+//      ÐÐ°Ð´Ð¾:
+//      Ð Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹Ñ Ð´Ð»Ñ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ð¸ ÑƒÐ½Ð¸Ð²ÐµÑ€ÑÐ°Ð»ÑŒÐ½Ð¾Ð³Ð¾ ÑÐ¿Ð¾ÑÐ¾Ð±Ð° Ð¿ÐµÑ€ÐµÐ´Ð°Ñ‡Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð‘Ð” (Ð´Ð»Ñ Ñ€Ð°Ð·Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… Ð¿Ñ€ÐµÐ´ÐºÐ¾Ð²
+//      IRepositoryManager) Ð¸ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‚Ð° ÑÐ°Ð¼Ð¾Ð³Ð¾ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ. Ð’ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÐºÐ¾Ð½Ñ‚ÐµÐºÑÑ‚Ðµ Ð¸Ð¼ÐµÐµÑ‚ÑÑ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ðº Postgre.
+//      Ð•ÑÑ‚ÑŒ:      
+//      Ð½Ð¾Ð²Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» Server\Server.Core\Server.Core.Static\AbstractServerBuilder.hpp:
 //      namespace Server::Builder
 //      {
 //          class IServerBuilder
@@ -45,7 +45,7 @@
 //          };
 //      }  /// namespace Server::Builder
 // 
-//      Èçìåí¸ííûé ìåòîä â ôàéëå Server\Server.Core\Server.Core.Static\ServerBuilder.hpp:
+//      Ð˜Ð·Ð¼ÐµÐ½Ñ‘Ð½Ð½Ñ‹Ð¹ Ð¼ÐµÑ‚Ð¾Ð´ Ð² Ñ„Ð°Ð¹Ð»Ðµ Server\Server.Core\Server.Core.Static\ServerBuilder.hpp:
 //      namespace Server::Builder
 //      {
 //          ServerBuilder::Server* make() noexcept
@@ -70,7 +70,7 @@
 //          }
 //      }  /// namespace Server::Builder
 // 
-//      Èçìåí¸ííûé ôàéë DataAccess\DataAccess.Postgre\PostgreRepositoryManager.hpp:
+//      Ð˜Ð·Ð¼ÐµÐ½Ñ‘Ð½Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» DataAccess\DataAccess.Postgre\PostgreRepositoryManager.hpp:
 //      namespace DataAccess
 //      {
 //           class PostgreRepositoryManager : public IRepositoryManager, public Server::Builder::IServerBuilder
@@ -96,10 +96,10 @@
 //           };
 //      }  /// namespace DataAccess
 //
-//      Â íàñòîÿùåì ôàéëå ïðîâîäèòñÿ èññëåäîâàíèå ïðîáëåìíîé ñèòóàöèè è ïóòåé ê íåé ïðèâîäÿùèõ, à òàêæå íåêîòîðûå âàðèàíòû àëüòåðíàòèâíûõ
-//      ðåàëèçàöèé ðàáîòàþùèõ áåç ïðîáëåì
-//      Äëÿ óïðîùåíèÿ òåñòèðîâàíèÿ ïðèìåì ñëåäóþùèå ñîêðàùåíèÿ:
-//          Îðèãèëüíîå èìÿ êëàññà           --->    Ïñåâäîíèì
+//      Ð’ Ð½Ð°ÑÑ‚Ð¾ÑÑ‰ÐµÐ¼ Ñ„Ð°Ð¹Ð»Ðµ Ð¿Ñ€Ð¾Ð²Ð¾Ð´Ð¸Ñ‚ÑÑ Ð¸ÑÑÐ»ÐµÐ´Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ð½Ð¾Ð¹ ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ð¸Ð¸ Ð¸ Ð¿ÑƒÑ‚ÐµÐ¹ Ðº Ð½ÐµÐ¹ Ð¿Ñ€Ð¸Ð²Ð¾Ð´ÑÑ‰Ð¸Ñ…, Ð° Ñ‚Ð°ÐºÐ¶Ðµ Ð½ÐµÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ð°Ð»ÑŒÑ‚ÐµÑ€Ð½Ð°Ñ‚Ð¸Ð²Ð½Ñ‹Ñ…
+//      Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÑŽÑ‰Ð¸Ñ… Ð±ÐµÐ· Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼
+//      Ð”Ð»Ñ ÑƒÐ¿Ñ€Ð¾Ñ‰ÐµÐ½Ð¸Ñ Ñ‚ÐµÑÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ñ€Ð¸Ð¼ÐµÐ¼ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ ÑÐ¾ÐºÑ€Ð°Ñ‰ÐµÐ½Ð¸Ñ:
+//          ÐžÑ€Ð¸Ð³Ð¸Ð»ÑŒÐ½Ð¾Ðµ Ð¸Ð¼Ñ ÐºÐ»Ð°ÑÑÐ°           --->    ÐŸÑÐµÐ²Ð´Ð¾Ð½Ð¸Ð¼
 //          PostgreRepositoryManager        --->    SpecificRM
 //          IRepositoryManager              --->    IRM
 //          IServerBuilder                  --->    ISB
