@@ -432,6 +432,7 @@ int main()
         std::unique_ptr<IRM> universalInterface = std::make_unique<SpecificRM>();
         universalInterface->GetConnectionOptions("test GOOD on line " + std::to_string(__LINE__));
         initRep(std::move(universalInterface));
+
     }
     /**/
 
