@@ -117,6 +117,10 @@ namespace rawPointers
 {
     struct IRM
     {
+        std::string Get()
+        {
+            return _connection;
+        }
         std::string _connection;
     };
 
@@ -137,7 +141,7 @@ namespace rawPointers
 
     void initRep(IRM* rep)
     {
-        cout << "rawPointers: " << rep->_connection << endl;
+        cout << "rawPointers: " << rep->Get() << endl;
     }
 
 }  /// namespace rawPointers
@@ -188,7 +192,7 @@ namespace uniquePointersAndSingleInheritance
 
     void initRep(std::unique_ptr<IRM> rep)
     {
-        cout << "rawPointers: " << rep->_connection << endl;
+        cout << "uniquePointersAndSingleInheritance: " << rep->_connection << endl;
     }
 
 }  /// namespace uniquePointersAndSingleInheritance
@@ -241,7 +245,7 @@ namespace uniquePointersAndSequentialInheritance
 
     void initRep(std::unique_ptr<IRM> rep)
     {
-        cout << "rawPointers: " << rep->_connection << endl;
+        cout << "uniquePointersAndSequentialInheritance: " << rep->_connection << endl;
     }
 
 }  /// namespace uniquePointersAndSequentialInheritance
@@ -291,17 +295,21 @@ namespace uniquePointersAndParallelInheritance
 
     void initRep(std::unique_ptr<IRM> rep)
     {
-        cout << "rawPointers: " << rep->_connection << endl;
+        cout << "uniquePointersAndParallelInheritance: " << rep->_connection << endl;
     }
 
 }  /// namespace uniquePointersAndParallelInheritance
 /**/
 
-/**/
+/** /
 namespace possibleSolution
 {
     struct IRM
     {
+        std::string Get()
+        {
+            return _connection;
+        }
         std::string _connection;
     };
 
@@ -321,10 +329,45 @@ namespace possibleSolution
 
     void initRep(std::unique_ptr<IRM> rep)
     {
-        cout << "rawPointers: " << rep->_connection << endl;
+        cout << "possibleSolution: " << rep->Get() << endl;
     }
 
 }  /// namespace possibleSolution 
+/**/
+
+/**/
+namespace possibleSolution2
+{
+    struct ISB
+    {
+        virtual ~ISB() = default;
+        virtual void GetConnectionOptions(std::string options) = 0;
+    };
+
+    struct IRM : public ISB
+    {
+        std::string Get()
+        {
+            return _connection;
+        }
+        std::string _connection{"test: "};
+        virtual void GetConnectionOptions(std::string options) = 0;
+    };
+
+    struct SpecificRM : public IRM
+    {
+        void GetConnectionOptions(std::string options)
+        {
+            _connection = options;
+        }
+    };
+
+    void initRep(std::unique_ptr<IRM> rep)
+    {
+        cout << "possibleSolution2: " << rep->Get() << endl;
+    }
+
+}  /// namespace possibleSolution2
 /**/
 
 int main()
@@ -367,17 +410,30 @@ int main()
     }
     /**/
 
-    /**/
+    /** /
     if(true)
     {
         using namespace possibleSolution;
 
         std::unique_ptr<ISB> universalInterface = std::make_unique<SpecificRM>();
         universalInterface->GetConnectionOptions("test GOOD on line " + std::to_string(__LINE__));
-        //std::unique_ptr<IRM> upIRM{ dynamic_cast<SpecificRM*>(universalInterface.get()) };
         IRM* pIRM = dynamic_cast<IRM*>(std::move(universalInterface.release()));
         std::unique_ptr<IRM> upIRM {std::move(pIRM)};
         initRep(std::move(upIRM));
+        // double destructor error
+    }
+    /**/
+
+    /**/
+    if(true)
+    {
+        using namespace possibleSolution2;
+
+        std::unique_ptr<IRM> universalInterface = std::make_unique<SpecificRM>();
+        universalInterface->GetConnectionOptions("test GOOD on line " + std::to_string(__LINE__));
+        //IRM* pIRM = dynamic_cast<IRM*>(std::move(universalInterface.release()));
+        //std::unique_ptr<IRM> upIRM {std::move(pIRM)};
+        initRep(std::move(universalInterface));
         // double destructor error
     }
     /**/
